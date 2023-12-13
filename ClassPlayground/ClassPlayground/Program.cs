@@ -69,6 +69,7 @@ namespace ClassPlayground
             Rectangle newRectangle = new Rectangle(2, 4);
             
             newRectangle.CalculateArea();
+            newRectangle.CalculateAspectRatio();
             Console.ReadKey();
         }
     }

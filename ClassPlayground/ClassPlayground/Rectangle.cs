@@ -8,13 +8,13 @@ namespace ClassPlayground
 {
     internal class Rectangle
     {
-        public int Width;
-        public int Height;
+        public int width;
+        public int height;
 
         public Rectangle(int width, int height)
         {
-            width = Width;
-            height = Height;
+            this.width = width;
+            this.height = height;
         }
 
         public void CalculateArea()
@@ -23,9 +23,34 @@ namespace ClassPlayground
             string ifarea = Console.ReadLine();
             if (ifarea == "1")
             {
-                int area = Width * Height;
-                Console.WriteLine("Obsah obdélníku je",area);
+                int area = width * height;
+                Console.WriteLine("Obsah obdélníku je " + area);
             }
+        }
+
+        public void CalculateAspectRatio()
+        {
+            Console.WriteLine("Pro spočítání poměru stran a zjištění typu obdélníku stiskněte 2");
+            int ratio;
+            string ifratio = Console.ReadLine();
+            if (ifratio == "2")
+            {
+                ratio = width / height;
+                if (ratio > 1)
+                {
+                    Console.WriteLine($"Poměr stran je {ratio} a obdélník je široký");
+                }
+                if(ratio < 1)
+                {
+                    Console.WriteLine($"Poměr stran je {ratio} a obdélník je vysoký");
+                }
+                if (ratio == 1)
+                {
+                    Console.WriteLine($"Poměr stran je {ratio} a obdélník je čtverec");
+                }
+            }
+            
+            
         }
     }
 }
