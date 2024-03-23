@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -78,6 +79,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wwalczyszyn-Iwindows-Paint.512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paint-palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-palette-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bucket-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pencil-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eraser-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ellipse-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ellipse-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-rectangle-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-line-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color_palette[1].png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
