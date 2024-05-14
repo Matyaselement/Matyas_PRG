@@ -28,47 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.timerCoin = new System.Windows.Forms.Timer(this.components);
+            this.updateCoinPick = new System.Windows.Forms.Timer(this.components);
+            this.LabelCoinsGathered = new System.Windows.Forms.Label();
+            this.player1 = new CyberPrague.player();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // timerCoin
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 568);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1493, 31);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.timerCoin.Enabled = true;
+            this.timerCoin.Interval = 1000;
+            this.timerCoin.Tick += new System.EventHandler(this.timerCoin_Tick);
             // 
-            // pictureBox2
+            // updateCoinPick
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(0, 82);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1493, 31);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.updateCoinPick.Enabled = true;
+            this.updateCoinPick.Interval = 33;
+            this.updateCoinPick.Tick += new System.EventHandler(this.updateCoinPick_Tick_1);
+            // 
+            // LabelCoinsGathered
+            // 
+            this.LabelCoinsGathered.AutoSize = true;
+            this.LabelCoinsGathered.Location = new System.Drawing.Point(42, 37);
+            this.LabelCoinsGathered.Name = "LabelCoinsGathered";
+            this.LabelCoinsGathered.Size = new System.Drawing.Size(59, 20);
+            this.LabelCoinsGathered.TabIndex = 1;
+            this.LabelCoinsGathered.Text = "0 coins";
+            // 
+            // player1
+            // 
+            this.player1.Location = new System.Drawing.Point(556, 206);
+            this.player1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.player1.Name = "player1";
+            this.player1.Size = new System.Drawing.Size(84, 89);
+            this.player1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1490, 661);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1425, 757);
+            this.Controls.Add(this.LabelCoinsGathered);
+            this.Controls.Add(this.player1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Text = "a";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Timer timerCoin;
+        private player player1;
+        private System.Windows.Forms.Timer updateCoinPick;
+        private System.Windows.Forms.Label LabelCoinsGathered;
     }
 }
 

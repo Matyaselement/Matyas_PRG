@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CyberPrague
 {
-    internal class Player_movement
+    public class Gather : UserControl
     {
+        
     }
 }
