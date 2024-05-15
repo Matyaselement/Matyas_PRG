@@ -10,7 +10,6 @@ namespace CyberPrague
     public class Coin : UserControl
     {
         private PictureBox pictureBox2;
-        private PictureBox pictureBox1;
 
         public Coin(int x, int y)
         {
@@ -40,6 +39,7 @@ namespace CyberPrague
             this.Size = new System.Drawing.Size(38, 40);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+
 
         }
     }

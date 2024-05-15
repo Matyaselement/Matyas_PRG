@@ -19,7 +19,6 @@ namespace CyberPrague
         public static bool IsLeft = false;
         public static bool IsRight = false;
 
-        public static List<Coin> CoinsList = new List<Coin>();
-        public static int Coins = 0;
+
     }
 }

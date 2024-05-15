@@ -12,11 +12,7 @@ namespace CyberPrague
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             KeyPreview = true;
@@ -61,7 +57,7 @@ namespace CyberPrague
             Coin c = new Coin(x, y);
             Controls.Add(c);
 
-            Core.CoinsList.Add(c);
+            CoinsList.Add(c);
         }
         private void updateCoinPick_Tick_1(object sender, EventArgs e)
         {
@@ -69,13 +65,13 @@ namespace CyberPrague
             {
 
 
-                foreach (Coin coin in Core.CoinsList)
+                foreach (Coin coin in CoinsList)
                 {
                     foreach (Gather g in Controls.OfType<Gather>())
                     {
                         if (g.Bounds.IntersectsWith(coin.Bounds))
                         {
-                            Core.CoinsList.Remove(coin);
+                            CoinsList.Remove(coin);
                             Controls.Remove(coin);
                             AddCoin();
                         }
@@ -87,8 +83,14 @@ namespace CyberPrague
 
         void AddCoin()
         {
-            Core.Coins++;
-            LabelCoinsGathered.Text = $"{Core.Coins+" coins"}";
+            coinCount++;
+            LabelCoinsGathered.Text = $"{coinCount+" coins"}";
+
+        }
+
+        public void InventoryButton_Click(object sender, EventArgs e)
+        {
+            InventoryContent();
         }
     }
 }

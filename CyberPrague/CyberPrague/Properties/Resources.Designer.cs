@@ -79,5 +79,15 @@ namespace CyberPrague.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sword_Pixel_art___Radin___kopie {
+            get {
+                object obj = ResourceManager.GetObject("Sword_Pixel_art_-_Radin - kopie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

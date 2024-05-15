@@ -9,6 +9,21 @@ namespace CyberPrague
 {
     public class Gather : UserControl
     {
-        
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Gather
+            // 
+            this.Name = "Gather";
+            this.Load += new System.EventHandler(this.Gather_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Gather_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
