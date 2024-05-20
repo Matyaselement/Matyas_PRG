@@ -97,5 +97,10 @@ namespace CyberPrague
         {
             InventoryContent();
         }
+
+        private void weapon1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

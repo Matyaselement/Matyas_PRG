@@ -72,13 +72,15 @@
             // weapon1
             // 
             this.weapon1.AutoSize = true;
+            this.weapon1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.weapon1.BackColor = System.Drawing.Color.Transparent;
             this.weapon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.weapon1.Location = new System.Drawing.Point(490, 175);
+            this.weapon1.Location = new System.Drawing.Point(490, 174);
             this.weapon1.Name = "weapon1";
             this.weapon1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.weapon1.Size = new System.Drawing.Size(57, 120);
+            this.weapon1.Size = new System.Drawing.Size(63, 123);
             this.weapon1.TabIndex = 4;
+            this.weapon1.Load += new System.EventHandler(this.weapon1_Load);
             // 
             // player2
             // 
