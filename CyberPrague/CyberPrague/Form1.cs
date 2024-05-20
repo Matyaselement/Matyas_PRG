@@ -12,7 +12,12 @@ namespace CyberPrague
 {
     public partial class Form1 : Form
     {
-        
+        public Form1()
+        {
+            InitializeComponent();
+            coinCount = 0;
+            UpdateCoinCountLabel();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             KeyPreview = true;

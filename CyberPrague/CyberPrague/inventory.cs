@@ -9,12 +9,6 @@ namespace CyberPrague
         public static List<Coin> CoinsList = new List<Coin>();
         public static int coinCount = 0;
 
-        public Form1()
-        {
-            InitializeComponent();
-            coinCount = 0;
-            UpdateCoinCountLabel();
-        }
 
         public void AddCoinButton_Click(object sender, EventArgs e)
         {

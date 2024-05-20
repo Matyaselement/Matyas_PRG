@@ -33,9 +33,9 @@
             this.updateCoinPick = new System.Windows.Forms.Timer(this.components);
             this.LabelCoinsGathered = new System.Windows.Forms.Label();
             this.InventoryButton = new System.Windows.Forms.Button();
-            this.player1 = new CyberPrague.player();
-            this.player2 = new CyberPrague.player();
             this.weapon1 = new CyberPrague.weapon();
+            this.player2 = new CyberPrague.player();
+            this.player1 = new CyberPrague.player();
             this.SuspendLayout();
             // 
             // timerCoin
@@ -69,13 +69,16 @@
             this.InventoryButton.UseVisualStyleBackColor = true;
             this.InventoryButton.Click += new System.EventHandler(this.InventoryButton_Click);
             // 
-            // player1
+            // weapon1
             // 
-            this.player1.Location = new System.Drawing.Point(-22502, 206);
-            this.player1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(84, 89);
-            this.player1.TabIndex = 0;
+            this.weapon1.AutoSize = true;
+            this.weapon1.BackColor = System.Drawing.Color.Transparent;
+            this.weapon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.weapon1.Location = new System.Drawing.Point(490, 175);
+            this.weapon1.Name = "weapon1";
+            this.weapon1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.weapon1.Size = new System.Drawing.Size(57, 120);
+            this.weapon1.TabIndex = 4;
             // 
             // player2
             // 
@@ -85,13 +88,13 @@
             this.player2.Size = new System.Drawing.Size(76, 80);
             this.player2.TabIndex = 3;
             // 
-            // weapon1
+            // player1
             // 
-            this.weapon1.BackColor = System.Drawing.Color.Transparent;
-            this.weapon1.Location = new System.Drawing.Point(490, 250);
-            this.weapon1.Name = "weapon1";
-            this.weapon1.Size = new System.Drawing.Size(76, 74);
-            this.weapon1.TabIndex = 4;
+            this.player1.Location = new System.Drawing.Point(-22502, 206);
+            this.player1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.player1.Name = "player1";
+            this.player1.Size = new System.Drawing.Size(84, 89);
+            this.player1.TabIndex = 0;
             // 
             // Form1
             // 
