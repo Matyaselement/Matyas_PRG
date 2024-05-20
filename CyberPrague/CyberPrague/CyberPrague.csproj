@@ -63,7 +63,9 @@
     <Compile Include="Gather.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="inventory.cs" />
+    <Compile Include="inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="player.cs">
@@ -82,6 +84,9 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Weapon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="BotGatherer.resx">
       <DependentUpon>BotGatherer.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gather.resx">
+      <DependentUpon>Gather.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="player.resx">
       <DependentUpon>player.cs</DependentUpon>
@@ -101,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weapon.resx">
+      <DependentUpon>Weapon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,6 +131,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\coin-euro_115099.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mcsword_diamond.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sword_Pixel_art_-_Radin - kopie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixil-frame-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixil-frame-0 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

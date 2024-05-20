@@ -32,6 +32,9 @@
             this.timerCoin = new System.Windows.Forms.Timer(this.components);
             this.updateCoinPick = new System.Windows.Forms.Timer(this.components);
             this.LabelCoinsGathered = new System.Windows.Forms.Label();
+            this.InventoryButton = new System.Windows.Forms.Button();
+            this.weapon1 = new CyberPrague.weapon();
+            this.player2 = new CyberPrague.player();
             this.player1 = new CyberPrague.player();
             this.SuspendLayout();
             // 
@@ -56,9 +59,38 @@
             this.LabelCoinsGathered.TabIndex = 1;
             this.LabelCoinsGathered.Text = "0 coins";
             // 
+            // InventoryButton
+            // 
+            this.InventoryButton.Location = new System.Drawing.Point(141, 35);
+            this.InventoryButton.Name = "InventoryButton";
+            this.InventoryButton.Size = new System.Drawing.Size(262, 66);
+            this.InventoryButton.TabIndex = 2;
+            this.InventoryButton.Text = "Inventory";
+            this.InventoryButton.UseVisualStyleBackColor = true;
+            this.InventoryButton.Click += new System.EventHandler(this.InventoryButton_Click);
+            // 
+            // weapon1
+            // 
+            this.weapon1.AutoSize = true;
+            this.weapon1.BackColor = System.Drawing.Color.Transparent;
+            this.weapon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.weapon1.Location = new System.Drawing.Point(490, 175);
+            this.weapon1.Name = "weapon1";
+            this.weapon1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.weapon1.Size = new System.Drawing.Size(57, 120);
+            this.weapon1.TabIndex = 4;
+            // 
+            // player2
+            // 
+            this.player2.BackColor = System.Drawing.Color.Transparent;
+            this.player2.Location = new System.Drawing.Point(490, 312);
+            this.player2.Name = "player2";
+            this.player2.Size = new System.Drawing.Size(76, 80);
+            this.player2.TabIndex = 3;
+            // 
             // player1
             // 
-            this.player1.Location = new System.Drawing.Point(556, 206);
+            this.player1.Location = new System.Drawing.Point(-22502, 206);
             this.player1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(84, 89);
@@ -69,6 +101,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1425, 757);
+            this.Controls.Add(this.weapon1);
+            this.Controls.Add(this.player2);
+            this.Controls.Add(this.InventoryButton);
             this.Controls.Add(this.LabelCoinsGathered);
             this.Controls.Add(this.player1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -87,6 +122,9 @@
         private player player1;
         private System.Windows.Forms.Timer updateCoinPick;
         private System.Windows.Forms.Label LabelCoinsGathered;
+        private System.Windows.Forms.Button InventoryButton;
+        private player player2;
+        private weapon weapon1;
     }
 }
 

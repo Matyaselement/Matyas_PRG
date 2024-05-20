@@ -117,20 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="among_us_crewmate_icon_159244" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\among_us_crewmate_icon_159244.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sword_Pixel_art_-_Radin - kopie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sword_Pixel_art_-_Radin - kopie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pixil-frame-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pixil-frame-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="coin_euro_115099" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\coin-euro_115099.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pixil-frame-0 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pixil-frame-0 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
