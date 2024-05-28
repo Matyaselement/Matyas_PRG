@@ -41,7 +41,7 @@
             // timerCoin
             // 
             this.timerCoin.Enabled = true;
-            this.timerCoin.Interval = 1000;
+            this.timerCoin.Interval = 3000;
             this.timerCoin.Tick += new System.EventHandler(this.timerCoin_Tick);
             // 
             // updateCoinPick
