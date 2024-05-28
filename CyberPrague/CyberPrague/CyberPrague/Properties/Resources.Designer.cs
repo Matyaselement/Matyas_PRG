@@ -79,15 +79,5 @@ namespace CyberPrague.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_0__1_ {
-            get {
-                object obj = ResourceManager.GetObject("pixil-frame-0 (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

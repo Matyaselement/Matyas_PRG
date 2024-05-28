@@ -62,11 +62,11 @@ namespace CyberPrague
         private bool isFlipped = false;
         private void timerMove_Tick(object sender, EventArgs e)
         {
-            if (Core.IsUp && Top > 40 - 91) //player topleft corner - 91
+            if (Core.IsUp && Top > 66 - 91) //player topleft corner - 91
             {
                 Top -= speed;
             }
-            else if (Core.IsDown && Bottom < Parent.ClientSize.Height -181) // player top left corner - 65
+            else if (Core.IsDown && Bottom < Parent.ClientSize.Height -105) // player top left corner - 65
             {
                 Top += speed;
             }
@@ -81,7 +81,7 @@ namespace CyberPrague
                 }
                 Left -= speed;
             }
-            else if (Core.IsRight && Right < Parent.ClientSize.Width - 100)
+            else if (Core.IsRight && Right < Parent.ClientSize.Width - 40)
             {
                 if (isFlipped)
                 {
