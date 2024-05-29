@@ -56,8 +56,8 @@ namespace CyberPrague
         {
             Random r = new Random();
 
-            int x = r.Next(2, 500);
-            int y = r.Next(2, 500);
+            int x = r.Next(40, ClientSize.Width - 78);
+            int y = r.Next(40, ClientSize.Height - 80);
 
             Coin c = new Coin(x, y);
             Controls.Add(c);
@@ -93,10 +93,6 @@ namespace CyberPrague
 
         }
 
-        public void InventoryButton_Click(object sender, EventArgs e)
-        {
-            InventoryContent();
-        }
 
         private void weapon1_Load(object sender, EventArgs e)
         {

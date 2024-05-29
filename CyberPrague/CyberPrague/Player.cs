@@ -57,7 +57,7 @@ namespace CyberPrague
         private void timerMove_Tick(object sender, EventArgs e)
         {
 
-            if (Core.IsUp && Top > 66)
+            if (Core.IsUp && Top > 40)
             {
                 Top -= speed;
             }
