@@ -20,8 +20,8 @@ namespace zombi_game
         public Form1()
         {
             InitializeComponent();
-           _soundPlayer = new SoundPlayer("03.Paris.wav");
-
+           _soundPlayer = new SoundPlayer("03. Paris.wav");
+            _soundPlayer.Play();
         }
         
 
@@ -114,6 +114,7 @@ namespace zombi_game
         }
         private void gameEngine(object sender, EventArgs e)
         {
+            _soundPlayer.Play();
             
             if (playerHealth > 1) // if player health is greater than 1
             {
@@ -276,10 +277,7 @@ namespace zombi_game
             player.BringToFront(); // bring the player to the front
         }
 
-        private void musicPlay_Click(object sender, EventArgs e)
-        {
-            _soundPlayer.Play();
-        }
+        
     }
 }
 
