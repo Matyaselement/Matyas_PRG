@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxWMPLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,19 +9,21 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace zombi_game
 {
     public partial class Form1 : Form
     {
-        System.Media.SoundPlayer player1 = new System.Media.SoundPlayer();
+        private SoundPlayer _soundPlayer;
+
         public Form1()
         {
             InitializeComponent();
-
-            player1.SoundLocation = "03.Paris.MP3";
+           _soundPlayer = new SoundPlayer("03.Paris.wav");
 
         }
+        
 
         bool goup; // this boolean will be used for the player to go up the screen
         bool godown; // this boolean will be used for the player to go down the screen
@@ -111,7 +114,7 @@ namespace zombi_game
         }
         private void gameEngine(object sender, EventArgs e)
         {
-            player1.Play();
+            
             if (playerHealth > 1) // if player health is greater than 1
             {
                 progressBar1.Value = Convert.ToInt32(playerHealth); // assign the progress bar to the player health integer
@@ -271,6 +274,11 @@ namespace zombi_game
             zombie.SizeMode = PictureBoxSizeMode.AutoSize; // set auto size for the new picture box
             this.Controls.Add(zombie); // add the picture box to the screen
             player.BringToFront(); // bring the player to the front
+        }
+
+        private void musicPlay_Click(object sender, EventArgs e)
+        {
+            _soundPlayer.Play();
         }
     }
 }

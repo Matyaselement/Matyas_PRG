@@ -38,6 +38,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.musicPlay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -133,12 +134,26 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "zombie";
             // 
+            // musicPlay
+            // 
+            this.musicPlay.BackColor = System.Drawing.Color.Gray;
+            this.musicPlay.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.musicPlay.ForeColor = System.Drawing.Color.Black;
+            this.musicPlay.Location = new System.Drawing.Point(225, 29);
+            this.musicPlay.Name = "musicPlay";
+            this.musicPlay.Size = new System.Drawing.Size(209, 52);
+            this.musicPlay.TabIndex = 10;
+            this.musicPlay.Text = "MUSIC";
+            this.musicPlay.UseVisualStyleBackColor = false;
+            this.musicPlay.Click += new System.EventHandler(this.musicPlay_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.musicPlay);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.player);
@@ -170,6 +185,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button musicPlay;
     }
 }
 
