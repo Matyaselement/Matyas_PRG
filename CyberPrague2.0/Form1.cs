@@ -1,5 +1,4 @@
-﻿using AxWMPLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,19 +8,19 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace zombi_game
+namespace CyberPrague2._0
 {
     public partial class Form1 : Form
     {
-        private SoundPlayer _soundPlayer;
-
         public Form1()
         {
             InitializeComponent();
+            this.KeyDown += new KeyEventHandler(keyisdown);
+            this.KeyUp += new KeyEventHandler(keyisup);
+            this.KeyPreview = true;  // This allows the form to capture key events
         }
-
 
         bool goup; // this boolean will be used for the player to go up the screen
         bool godown; // this boolean will be used for the player to go down the screen
@@ -36,7 +35,9 @@ namespace zombi_game
         bool gameOver = false; // this boolean is false in the beginning and it will be used when the game is finished
         Random rnd = new Random(); // this is an instance of the random class we will use this to create a random number for this game
                                    // end of listing variables
-
+        bool isFlipped = false;
+        bool isFlippedUp = false;
+        bool isFlippedDown = false;
 
         private void keyisdown(object sender, KeyEventArgs e)
         {
@@ -46,7 +47,9 @@ namespace zombi_game
             {
                 goleft = true; // change go left to true
                 facing = "left"; //change facing to left
-                player.Image = Properties.Resources.left; // change the player image to LEFT image
+                FlipPlayerImage(RotateFlipType.RotateNoneFlipY);// change the player image to LEFT image
+                
+
             }
             // end of left key selection
             // if the right key is pressed then do the following
@@ -54,7 +57,7 @@ namespace zombi_game
             {
                 goright = true; // change go right to true
                 facing = "right"; // change facing to right
-                player.Image = Properties.Resources.right; // change the player image to right
+                FlipPlayerImage(RotateFlipType.Rotate180FlipY);
             }
             // end of right key selection
             // if the up key is pressed then do the following
@@ -62,7 +65,7 @@ namespace zombi_game
             {
                 facing = "up"; // change facing to up
                 goup = true; // change go up to true
-                player.Image = Properties.Resources.up; // change the player image to up
+                FlipPlayerImage(RotateFlipType.Rotate90FlipY);
             }
             // end of up key selection
             // if the down key is pressed then do the following
@@ -70,7 +73,8 @@ namespace zombi_game
             {
                 facing = "down"; // change facing to down
                 godown = true; // change go down to true
-                player.Image = Properties.Resources.down; //change the player image to down
+                if (!isFlippedDown)
+                FlipPlayerImage(RotateFlipType.Rotate270FlipY);
             }
             // end of the down key selection
         }
@@ -112,24 +116,27 @@ namespace zombi_game
         }
         private void gameEngine(object sender, EventArgs e)
         {
-            
+
             if (playerHealth > 1) // if player health is greater than 1
             {
-                progressBar1.Value = Convert.ToInt32(playerHealth); // assign the progress bar to the player health integer
+                healthBar.Value = Convert.ToInt32(playerHealth); // assign the progress bar to the player health integer
             }
             else
             {
                 // if the player health is below 1
-                player.Image = Properties.Resources.dead; // show the player dead image
-                timer1.Stop(); // stop the timer
-                gameOver = true; // change game over to true
+                //player.Image = Properties.Resources.dead; // show the player dead image
+                // stop the timer
+                // change game over to true
+                timer1.Stop();
+                gameOver = true;
+                return;
             }
-            label3.Text = "   Ammo:  " + ammo; // show the ammo amount on label 1
-            label5.Text = "Kills: " + score; // show the total kills on the score
+            ammoLabel.Text = "   Ammo:  " + ammo; // show the ammo amount on label 1
+            killCountLabel.Text = "Kills: " + score; // show the total kills on the score
             // if the player health is less than 20
             if (playerHealth < 20)
             {
-                progressBar1.ForeColor = System.Drawing.Color.Red; // change the progress bar colour to red. 
+                healthBar.ForeColor = System.Drawing.Color.Red; // change the progress bar colour to red. 
             }
             if (goleft && player.Left > 0)
             {
@@ -197,22 +204,40 @@ namespace zombi_game
                     if (((PictureBox)x).Left > player.Left)
                     {
                         ((PictureBox)x).Left -= zombieSpeed; // move zombie towards the left of the player
-                        ((PictureBox)x).Image = Properties.Resources.zleft; // change the zombie image to the left
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter; // change the zombie image to the left
                     }
                     if (((PictureBox)x).Top > player.Top)
                     {
+                        if (!isFlippedUp)
+                        {
+                            Bitmap bm = new Bitmap(player.Image);
+                            bm.RotateFlip(RotateFlipType.Rotate90FlipY);
+                            player.Image = bm;
+                            isFlippedUp = true;
+                        }
                         ((PictureBox)x).Top -= zombieSpeed; // move zombie upwards towards the players top
-                        ((PictureBox)x).Image = Properties.Resources.zup; // change the zombie picture to the top pointing image
                     }
                     if (((PictureBox)x).Left < player.Left)
                     {
+                        if (!isFlipped)
+                        {
+                            Bitmap bm = new Bitmap(player.Image);
+                            bm.RotateFlip(RotateFlipType.Rotate180FlipY);
+                            player.Image = bm;
+                            isFlipped = true;
+                        }
                         ((PictureBox)x).Left += zombieSpeed; // move zombie towards the right of the player
-                        ((PictureBox)x).Image = Properties.Resources.zright; // change the image to the right image
                     }
                     if (((PictureBox)x).Top < player.Top)
                     {
+                        if (!isFlippedDown)
+                        {
+                            Bitmap bm = new Bitmap(player.Image);
+                            bm.RotateFlip(RotateFlipType.Rotate270FlipY);
+                            player.Image = bm;
+                            isFlippedDown = true;
+                        }
                         ((PictureBox)x).Top += zombieSpeed; // move the zombie towards the bottom of the player
-                        ((PictureBox)x).Image = Properties.Resources.zdown; // change the image to the down zombie
                     }
                 }
                 // below is the second for loop, this is nexted inside the first one
@@ -266,15 +291,37 @@ namespace zombi_game
             // when this function is called it will make zombies in the game
             PictureBox zombie = new PictureBox(); // create a new picture box called zombie
             zombie.Tag = "zombie"; // add a tag to it called zombie
-            zombie.Image = Properties.Resources.zdown; // the default picture for the zombie is zdown
+            zombie.Image = Properties.Resources.enemyCharacter; // the default picture for the zombie is zdown 
             zombie.Left = rnd.Next(0, 900); // generate a number between 0 and 900 and assignment that to the new zombies left 
             zombie.Top = rnd.Next(0, 800); // generate a number between 0 and 800 and assignment that to the new zombies top
-            zombie.SizeMode = PictureBoxSizeMode.AutoSize; // set auto size for the new picture box
+            zombie.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
             this.Controls.Add(zombie); // add the picture box to the screen
             player.BringToFront(); // bring the player to the front
         }
 
-        
+        private void FlipPlayerImage(RotateFlipType flipType)
+        {
+            Bitmap bm = new Bitmap(Properties.Resources.playerCharacter);
+            bm.RotateFlip(flipType);
+            player.Image = bm;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            player.Image = Properties.Resources.playerCharacter;
+            player.SizeMode = PictureBoxSizeMode.AutoSize;
+            player.Location = new Point(100, 100);  // Set initial position
+            this.Controls.Add(player);
+            timer1.Interval = 20;  // Set the interval for the timer (50 milliseconds in this case)
+            timer1.Tick += new EventHandler(gameEngine);
+            timer1.Start();  // Start the timer
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
-
