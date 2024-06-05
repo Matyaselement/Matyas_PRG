@@ -1,0 +1,139 @@
+﻿namespace CyberPrague2._0
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Vyžaduje se proměnná návrháře.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Uvolněte všechny používané prostředky.
+        /// </summary>
+        /// <param name="disposing">hodnota true, když by se měl spravovaný prostředek odstranit; jinak false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Kód generovaný Návrhářem Windows Form
+
+        /// <summary>
+        /// Metoda vyžadovaná pro podporu Návrháře - neupravovat
+        /// obsah této metody v editoru kódu.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.ammoLabel = new System.Windows.Forms.Label();
+            this.killCountLabel = new System.Windows.Forms.Label();
+            this.hpLabel = new System.Windows.Forms.Label();
+            this.healthBar = new System.Windows.Forms.ProgressBar();
+            this.player = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ammoLabel
+            // 
+            this.ammoLabel.AutoSize = true;
+            this.ammoLabel.Location = new System.Drawing.Point(20, 14);
+            this.ammoLabel.Name = "ammoLabel";
+            this.ammoLabel.Size = new System.Drawing.Size(58, 20);
+            this.ammoLabel.TabIndex = 0;
+            this.ammoLabel.Text = "AMMO";
+            // 
+            // killCountLabel
+            // 
+            this.killCountLabel.AutoSize = true;
+            this.killCountLabel.Location = new System.Drawing.Point(105, 14);
+            this.killCountLabel.Name = "killCountLabel";
+            this.killCountLabel.Size = new System.Drawing.Size(101, 20);
+            this.killCountLabel.TabIndex = 1;
+            this.killCountLabel.Text = "KILL COUNT";
+            // 
+            // hpLabel
+            // 
+            this.hpLabel.AutoSize = true;
+            this.hpLabel.Location = new System.Drawing.Point(240, 15);
+            this.hpLabel.Name = "hpLabel";
+            this.hpLabel.Size = new System.Drawing.Size(73, 20);
+            this.hpLabel.TabIndex = 2;
+            this.hpLabel.Text = "HEALTH";
+            // 
+            // healthBar
+            // 
+            this.healthBar.Location = new System.Drawing.Point(332, -1);
+            this.healthBar.Name = "healthBar";
+            this.healthBar.Size = new System.Drawing.Size(219, 46);
+            this.healthBar.TabIndex = 5;
+            this.healthBar.Value = 100;
+            // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.player.Image = global::CyberPrague2._0.Properties.Resources.playerCharacter;
+            this.player.Location = new System.Drawing.Point(318, 177);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(66, 70);
+            this.player.TabIndex = 4;
+            this.player.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox1.Image = global::CyberPrague2._0.Properties.Resources.enemyCharacter;
+            this.pictureBox1.Location = new System.Drawing.Point(173, 192);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(97, 89);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "zombie";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::CyberPrague2._0.Properties.Resources._1717360880015;
+            this.ClientSize = new System.Drawing.Size(978, 944);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.player);
+            this.Controls.Add(this.healthBar);
+            this.Controls.Add(this.hpLabel);
+            this.Controls.Add(this.killCountLabel);
+            this.Controls.Add(this.ammoLabel);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label ammoLabel;
+        private System.Windows.Forms.Label killCountLabel;
+        private System.Windows.Forms.Label hpLabel;
+        private System.Windows.Forms.ProgressBar healthBar;
+        private System.Windows.Forms.PictureBox player;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+    }
+}
+
