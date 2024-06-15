@@ -63,16 +63,6 @@ namespace CyberPrague2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1717360880015 {
-            get {
-                object obj = ResourceManager.GetObject("1717360880015", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ammo_Image {
             get {
                 object obj = ResourceManager.GetObject("ammo_Image", resourceCulture);
@@ -83,9 +73,9 @@ namespace CyberPrague2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap enemyCharacter {
+        internal static System.Drawing.Bitmap Background {
             get {
-                object obj = ResourceManager.GetObject("enemyCharacter", resourceCulture);
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,79 @@ namespace CyberPrague2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerCharacter {
+        internal static System.Drawing.Bitmap enemyCharacter1Down {
             get {
-                object obj = ResourceManager.GetObject("playerCharacter", resourceCulture);
+                object obj = ResourceManager.GetObject("enemyCharacter1Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter1Left {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter1Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter1Right {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter1Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter1Up {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter1Up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerCharacterDown {
+            get {
+                object obj = ResourceManager.GetObject("playerCharacterDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerCharacterLeft {
+            get {
+                object obj = ResourceManager.GetObject("playerCharacterLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerCharacterRight {
+            get {
+                object obj = ResourceManager.GetObject("playerCharacterRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerCharacterUp {
+            get {
+                object obj = ResourceManager.GetObject("playerCharacterUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
