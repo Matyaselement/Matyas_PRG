@@ -83,16 +83,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\playerCharacter.png" />
+    <None Include="Resources\enemyCharacter1Down.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ammo_Image.png" />
+    <None Include="Resources\enemyCharacter1Right.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\enemyCharacter.png" />
+    <None Include="Resources\enemyCharacter1Up.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1717360880015.png" />
+    <None Include="Resources\enemyCharacter1Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerCharacterDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerCharacterRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerCharacterUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerCharacterLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ammo_Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

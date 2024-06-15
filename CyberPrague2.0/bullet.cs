@@ -21,8 +21,8 @@ namespace CyberPrague2._0
         {
             // this function will add the bullet to the game play
             // it is required to be called from the main class
-            Bullet.BackColor = System.Drawing.Color.White; // set the colour white for the bullet
-            Bullet.Size = new Size(5, 5); // set the size to the bullet to 5 pixel by 5 pixel
+            Bullet.BackColor = System.Drawing.Color.Red; // set the colour white for the bullet
+            Bullet.Size = new Size(15, 15); // set the size to the bullet to 5 pixel by 5 pixel
             Bullet.Tag = "bullet"; // set the tag to bullet
             Bullet.Left = bulletLeft; // set bullet left 
             Bullet.Top = bulletTop; // set bullet right

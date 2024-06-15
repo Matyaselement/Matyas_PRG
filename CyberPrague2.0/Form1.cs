@@ -35,21 +35,16 @@ namespace CyberPrague2._0
         bool gameOver = false; // this boolean is false in the beginning and it will be used when the game is finished
         Random rnd = new Random(); // this is an instance of the random class we will use this to create a random number for this game
                                    // end of listing variables
-        bool isFlipped = false;
-        bool isFlippedUp = false;
-        bool isFlippedDown = false;
-
         private void keyisdown(object sender, KeyEventArgs e)
         {
             if (gameOver) return; // if game over is true then do nothing in this event
-            // if the left key is pressed then do the following
+                                  // if the left key is pressed then do the following
+
             if (e.KeyCode == Keys.Left)
             {
                 goleft = true; // change go left to true
                 facing = "left"; //change facing to left
-                FlipPlayerImage(RotateFlipType.RotateNoneFlipY);// change the player image to LEFT image
-                
-
+                player.Image = Properties.Resources.playerCharacterLeft; // change the player image to LEFT image
             }
             // end of left key selection
             // if the right key is pressed then do the following
@@ -57,7 +52,7 @@ namespace CyberPrague2._0
             {
                 goright = true; // change go right to true
                 facing = "right"; // change facing to right
-                FlipPlayerImage(RotateFlipType.Rotate180FlipY);
+                player.Image = Properties.Resources.playerCharacterRight; // change the player image to right
             }
             // end of right key selection
             // if the up key is pressed then do the following
@@ -65,7 +60,7 @@ namespace CyberPrague2._0
             {
                 facing = "up"; // change facing to up
                 goup = true; // change go up to true
-                FlipPlayerImage(RotateFlipType.Rotate90FlipY);
+                player.Image = Properties.Resources.playerCharacterUp; // change the player image to up
             }
             // end of up key selection
             // if the down key is pressed then do the following
@@ -73,12 +68,96 @@ namespace CyberPrague2._0
             {
                 facing = "down"; // change facing to down
                 godown = true; // change go down to true
-                if (!isFlippedDown)
-                FlipPlayerImage(RotateFlipType.Rotate270FlipY);
+                player.Image = Properties.Resources.playerCharacterDown; //change the player image to down
             }
             // end of the down key selection
         }
 
+        /*if (e.KeyCode == Keys.Left && currentFacing != "left")
+            {
+                goleft = true; // change go left to true
+                facing = "left"; //change facing to left
+                switch (currentFacing)
+                {
+                    case "up":
+                        FlipPlayerImage(RotateFlipType.Rotate270FlipNone);
+                        break;
+                    case "down":
+                        FlipPlayerImage(RotateFlipType.Rotate90FlipNone);
+                        break;
+                    case "right":
+                        FlipPlayerImage(RotateFlipType.Rotate180FlipNone);
+                        break;
+                }
+                // change the player image to LEFT image
+
+                currentFacing = "left";
+            }
+            // end of left key selection
+            // if the right key is pressed then do the following
+            if (e.KeyCode == Keys.Right && currentFacing != "right")
+            {
+                goright = true; // change go right to true
+                facing = "right"; // change facing to right
+                switch (currentFacing)
+                {
+                    case "up":
+                        FlipPlayerImage(RotateFlipType.Rotate90FlipNone);
+                        break;
+                    case "down":
+                        FlipPlayerImage(RotateFlipType.Rotate270FlipNone);
+                        break;
+                    case "left":
+                        FlipPlayerImage(RotateFlipType.Rotate180FlipNone);
+                        break;
+                }
+
+                currentFacing = "right";
+            }
+            // end of right key selection
+            // if the up key is pressed then do the following
+            if (e.KeyCode == Keys.Up && currentFacing != "up")
+            {
+                facing = "up"; // change facing to up
+                goup = true; // change go up to true
+                switch (currentFacing)
+                {
+                    case "left":
+                        FlipPlayerImage(RotateFlipType.Rotate90FlipNone);
+                        break;
+                    case "right":
+                        FlipPlayerImage(RotateFlipType.Rotate270FlipNone);
+                        break;
+                    case "down":
+                        FlipPlayerImage(RotateFlipType.Rotate180FlipNone);
+                        break;
+                }
+
+                currentFacing = "up";
+            }
+            // end of up key selection
+            // if the down key is pressed then do the following
+            if (e.KeyCode == Keys.Down && currentFacing != "down")
+            {
+                facing = "down"; // change facing to down
+                godown = true; // change go down to true
+                switch (currentFacing)
+                {
+                    case "left":
+                        FlipPlayerImage(RotateFlipType.Rotate270FlipNone);
+                        break;
+                    case "right":
+                        FlipPlayerImage(RotateFlipType.Rotate90FlipNone);
+                        break;
+                    case "up":
+                        FlipPlayerImage(RotateFlipType.Rotate180FlipNone);
+                        break;
+                }
+
+                currentFacing = "down";
+        */
+
+        //vresion that didnt work
         private void keyisup(object sender, KeyEventArgs e)
         {
             if (gameOver) return; // if game is over then do nothing in this event
@@ -134,7 +213,7 @@ namespace CyberPrague2._0
             ammoLabel.Text = "   Ammo:  " + ammo; // show the ammo amount on label 1
             killCountLabel.Text = "Kills: " + score; // show the total kills on the score
             // if the player health is less than 20
-            if (playerHealth < 20)
+            if (healthBar.Value < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red; // change the progress bar colour to red. 
             }
@@ -204,40 +283,22 @@ namespace CyberPrague2._0
                     if (((PictureBox)x).Left > player.Left)
                     {
                         ((PictureBox)x).Left -= zombieSpeed; // move zombie towards the left of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter; // change the zombie image to the left
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Left; // change the zombie image to the left
                     }
                     if (((PictureBox)x).Top > player.Top)
                     {
-                        if (!isFlippedUp)
-                        {
-                            Bitmap bm = new Bitmap(player.Image);
-                            bm.RotateFlip(RotateFlipType.Rotate90FlipY);
-                            player.Image = bm;
-                            isFlippedUp = true;
-                        }
                         ((PictureBox)x).Top -= zombieSpeed; // move zombie upwards towards the players top
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Up; // change the zombie picture to the top pointing image
                     }
                     if (((PictureBox)x).Left < player.Left)
                     {
-                        if (!isFlipped)
-                        {
-                            Bitmap bm = new Bitmap(player.Image);
-                            bm.RotateFlip(RotateFlipType.Rotate180FlipY);
-                            player.Image = bm;
-                            isFlipped = true;
-                        }
                         ((PictureBox)x).Left += zombieSpeed; // move zombie towards the right of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Right; // change the image to the right image
                     }
                     if (((PictureBox)x).Top < player.Top)
                     {
-                        if (!isFlippedDown)
-                        {
-                            Bitmap bm = new Bitmap(player.Image);
-                            bm.RotateFlip(RotateFlipType.Rotate270FlipY);
-                            player.Image = bm;
-                            isFlippedDown = true;
-                        }
                         ((PictureBox)x).Top += zombieSpeed; // move the zombie towards the bottom of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Down; // change the image to the down zombie
                     }
                 }
                 // below is the second for loop, this is nexted inside the first one
@@ -267,10 +328,11 @@ namespace CyberPrague2._0
         {
             // this function will make a ammo image for this game
             PictureBox ammo = new PictureBox(); // create a new instance of the picture box
-            ammo.Image = Properties.Resources.ammo_Image; // assignment the ammo image to the picture box
-            ammo.SizeMode = PictureBoxSizeMode.AutoSize; // set the size to auto size
-            ammo.Left = rnd.Next(10, 890); // set the location to a random left
-            ammo.Top = rnd.Next(50, 600); // set the location to a random top
+            ammo.Image = Properties.Resources.ammo_Image;// assignment the ammo image to the picture box
+            ammo.Size = new System.Drawing.Size(64, 64);
+            ammo.SizeMode = PictureBoxSizeMode.StretchImage; // set the size to auto size
+            ammo.Left = rnd.Next(10, ClientSize.Width - 64); // set the location to a random left
+            ammo.Top = rnd.Next(50, ClientSize.Height - 64); // set the location to a random top
             ammo.Tag = "ammo"; // set the tag to ammo
             this.Controls.Add(ammo); // add the ammo picture box to the screen
             ammo.BringToFront(); // bring it to front
@@ -290,26 +352,22 @@ namespace CyberPrague2._0
         {
             // when this function is called it will make zombies in the game
             PictureBox zombie = new PictureBox(); // create a new picture box called zombie
+            zombie.Size = new System.Drawing.Size(50, 50);
             zombie.Tag = "zombie"; // add a tag to it called zombie
-            zombie.Image = Properties.Resources.enemyCharacter; // the default picture for the zombie is zdown 
-            zombie.Left = rnd.Next(0, 900); // generate a number between 0 and 900 and assignment that to the new zombies left 
-            zombie.Top = rnd.Next(0, 800); // generate a number between 0 and 800 and assignment that to the new zombies top
+            zombie.Image = Properties.Resources.enemyCharacter1Down; // the default picture for the zombie is zdown 
+            zombie.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new zombies left 
+            zombie.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new zombies top
             zombie.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
             this.Controls.Add(zombie); // add the picture box to the screen
+            DoubleBuffered = true;
             player.BringToFront(); // bring the player to the front
-        }
-
-        private void FlipPlayerImage(RotateFlipType flipType)
-        {
-            Bitmap bm = new Bitmap(Properties.Resources.playerCharacter);
-            bm.RotateFlip(flipType);
-            player.Image = bm;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            player.Image = Properties.Resources.playerCharacter;
-            player.SizeMode = PictureBoxSizeMode.AutoSize;
+            player.Image = Properties.Resources.playerCharacterLeft;
+            DoubleBuffered = true;
+            player.SizeMode = PictureBoxSizeMode.StretchImage;
             player.Location = new Point(100, 100);  // Set initial position
             this.Controls.Add(player);
             timer1.Interval = 20;  // Set the interval for the timer (50 milliseconds in this case)
@@ -322,6 +380,9 @@ namespace CyberPrague2._0
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

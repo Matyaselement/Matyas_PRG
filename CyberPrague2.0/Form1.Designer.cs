@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ammoLabel = new System.Windows.Forms.Label();
             this.killCountLabel = new System.Windows.Forms.Label();
             this.hpLabel = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
-            this.player = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            this.player = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ammoLabel
             // 
             this.ammoLabel.AutoSize = true;
+            this.ammoLabel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ammoLabel.Location = new System.Drawing.Point(20, 14);
             this.ammoLabel.Name = "ammoLabel";
             this.ammoLabel.Size = new System.Drawing.Size(58, 20);
@@ -52,6 +56,7 @@
             // killCountLabel
             // 
             this.killCountLabel.AutoSize = true;
+            this.killCountLabel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.killCountLabel.Location = new System.Drawing.Point(105, 14);
             this.killCountLabel.Name = "killCountLabel";
             this.killCountLabel.Size = new System.Drawing.Size(101, 20);
@@ -61,6 +66,7 @@
             // hpLabel
             // 
             this.hpLabel.AutoSize = true;
+            this.hpLabel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.hpLabel.Location = new System.Drawing.Point(240, 15);
             this.hpLabel.Name = "hpLabel";
             this.hpLabel.Size = new System.Drawing.Size(73, 20);
@@ -69,21 +75,12 @@
             // 
             // healthBar
             // 
+            this.healthBar.ForeColor = System.Drawing.Color.Lime;
             this.healthBar.Location = new System.Drawing.Point(332, -1);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(219, 46);
             this.healthBar.TabIndex = 5;
             this.healthBar.Value = 100;
-            // 
-            // player
-            // 
-            this.player.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.player.Image = global::CyberPrague2._0.Properties.Resources.playerCharacter;
-            this.player.Location = new System.Drawing.Point(318, 177);
-            this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(66, 70);
-            this.player.TabIndex = 4;
-            this.player.TabStop = false;
             // 
             // timer1
             // 
@@ -94,32 +91,59 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox1.Image = global::CyberPrague2._0.Properties.Resources.enemyCharacter;
-            this.pictureBox1.Location = new System.Drawing.Point(173, 192);
+            this.pictureBox1.Image = global::CyberPrague2._0.Properties.Resources.enemyCharacter1Down;
+            this.pictureBox1.Location = new System.Drawing.Point(230, 84);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "zombie";
             // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.player.Image = global::CyberPrague2._0.Properties.Resources.playerCharacterLeft;
+            this.player.Location = new System.Drawing.Point(318, 206);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(64, 64);
+            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.player.TabIndex = 4;
+            this.player.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox2.Image = global::CyberPrague2._0.Properties.Resources.enemyCharacter1Down;
+            this.pictureBox2.Location = new System.Drawing.Point(450, 84);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "zombie";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CyberPrague2._0.Properties.Resources._1717360880015;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackgroundImage = global::CyberPrague2._0.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(978, 944);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.hpLabel);
             this.Controls.Add(this.killCountLabel);
             this.Controls.Add(this.ammoLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +158,7 @@
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

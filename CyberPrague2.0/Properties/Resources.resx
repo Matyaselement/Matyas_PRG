@@ -118,16 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="enemyCharacter1Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemyCharacter1Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerCharacterUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerCharacterUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerCharacterDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerCharacterDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemyCharacter1Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemyCharacter1Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemyCharacter1Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemyCharacter1Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerCharacterLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerCharacterLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemyCharacter1Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemyCharacter1Left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerCharacterRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerCharacterRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ammo_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ammo_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerCharacter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playerCharacter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="enemyCharacter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemyCharacter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1717360880015" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1717360880015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
