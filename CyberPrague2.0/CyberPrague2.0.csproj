@@ -112,5 +112,17 @@
   <ItemGroup>
     <None Include="Resources\ammo_Image.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyCharacter2Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyCharacter2Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyCharacter2Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyCharacter2Left.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

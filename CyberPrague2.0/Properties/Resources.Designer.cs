@@ -123,6 +123,46 @@ namespace CyberPrague2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter2Down {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter2Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter2Left {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter2Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter2Right {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter2Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemyCharacter2Up {
+            get {
+                object obj = ResourceManager.GetObject("enemyCharacter2Up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap playerCharacterDown {
             get {
                 object obj = ResourceManager.GetObject("playerCharacterDown", resourceCulture);
