@@ -8,18 +8,38 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace CyberPrague2._0
 {
     public partial class Form1 : Form
     {
+        private Button restartButton; // Declare the restart button
         public Form1()
         {
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(keyisdown);
             this.KeyUp += new KeyEventHandler(keyisup);
             this.KeyPreview = true;  // This allows the form to capture key events
+
+            // Initialize the restart button
+            restartButton = new Button();  // Added this line
+            restartButton.Text = "Restart";
+            restartButton.Size = new Size(100, 50);
+            restartButton.Location = new Point((this.Width / 2) - 50, (this.Height / 2) - 25);
+            restartButton.Visible = false; // Initially hidden
+            restartButton.Click += RestartButton_Click; // Attach the click event handler
+            this.Controls.Add(restartButton);
+        }
+        private void CreateButton()
+        {
+            restartButton = new Button();  // Added this line
+            restartButton.Text = "Restart";
+            restartButton.Size = new Size(100, 50);
+            restartButton.Location = new Point((this.Width / 2) - 50, (this.Height / 2) - 25);
+            restartButton.Visible = false; // Initially hidden
+            restartButton.Click += RestartButton_Click; // Attach the click event handler
+            this.Controls.Add(restartButton);
         }
 
         bool goup; // this boolean will be used for the player to go up the screen
@@ -209,7 +229,8 @@ namespace CyberPrague2._0
                 // change game over to true
                 timer1.Stop();
                 gameOver = true;
-                return;
+                restartButton.Visible = true; // Show the restart button
+                restartButton.BringToFront();
             }
             ammoLabel.Text = "   Ammo:  " + ammo; // show the ammo amount on label 1
             killCountLabel.Text = "Kills: " + score; // show the total kills on the score
@@ -337,7 +358,20 @@ namespace CyberPrague2._0
                 foreach (Control j in this.Controls)
                 {
                     // below is the selection thats identifying the bullet and zombie
-                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "zombie")) 
+                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "zombie"))
+                    {
+                        // below is the if statement thats checking if bullet hits the zombie
+                        if (x.Bounds.IntersectsWith(j.Bounds))
+                        {
+                            score++; // increase the kill score by 1 
+                            this.Controls.Remove(j); // this will remove the bullet from the screen
+                            j.Dispose(); // this will dispose the bullet all together from the program
+                            this.Controls.Remove(x); // this will remove the zombie from the screen
+                            x.Dispose(); // this will dispose the zombie from the program
+                            makeZombies(); // this function will invoke the make zombies function to add another zombie to the game
+                        }
+                    }
+                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "zombie2"))
                     {
                         // below is the if statement thats checking if bullet hits the zombie
                         if (x.Bounds.IntersectsWith(j.Bounds))
@@ -417,6 +451,51 @@ namespace CyberPrague2._0
             timer1.Interval = 20;  // Set the interval for the timer (50 milliseconds in this case)
             timer1.Tick += new EventHandler(gameEngine);
             timer1.Start();  // Start the timer
+        }
+        private void RestartButton_Click(object sender, EventArgs e)
+        {
+            // Reset game state
+            playerHealth = 100;
+            score = 0;
+            ammo = 10;
+            gameOver = false;
+            restartButton.Visible = false;
+
+            // Clear existing zombies and bullets
+            for (int i = this.Controls.Count - 1; i >= 0; i--)
+            {
+                Control x = this.Controls[i];
+                if (x is PictureBox && (x.Tag == "zombie" || x.Tag == "bullet"))
+                {
+                    this.Controls.Remove(x);
+                    x.Dispose();
+                }
+            }
+
+            // Unsubscribe from key events to avoid multiple subscriptions
+            this.KeyDown -= keyisdown;
+            this.KeyUp -= keyisup;
+
+            // Restart the game elements
+            for (int i = 0; i < 3; i++)
+            {
+                makeZombies();
+            }
+            makeZombies2();
+
+            timer1.Start();
+            player.Image = Properties.Resources.playerCharacterLeft;
+            player.Location = new Point(100, 100); // Reset player position
+            healthBar.Value = 100;
+            healthBar.ForeColor = System.Drawing.Color.Green;
+            ammoLabel.Text = "   Ammo:  " + ammo;
+            killCountLabel.Text = "Kills: " + score;
+
+            // Re-subscribe to key events
+            this.KeyDown += keyisdown;
+            this.KeyUp += keyisup;
+
+            this.Focus();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

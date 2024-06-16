@@ -59,7 +59,7 @@ namespace CyberPrague2._0
             // if the bullet is 10 pixels from the top OR
             // if the bullet is 616 pixels to the bottom OR
             // IF ANY ONE OF THE CONDITIONS ARE MET THEN THE FOLLOWING CODE WILL BE EXECUTED
-            if (Bullet.Left < 16 || Bullet.Left > 1500 || Bullet.Top < 10 || Bullet.Top > 1000)
+            if (Bullet.Left < 16 || Bullet.Left > 3000 || Bullet.Top < 10 || Bullet.Top > 1000)
             {
                 tm.Stop(); // stop the timer
                 tm.Dispose(); // dispose the timer event and component from the program
