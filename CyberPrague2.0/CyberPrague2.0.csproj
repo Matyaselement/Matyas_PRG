@@ -110,9 +110,6 @@
     <None Include="Resources\Background.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ammo_Image.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\enemyCharacter2Down.png" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +120,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\enemyCharacter2Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ammo_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HP_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

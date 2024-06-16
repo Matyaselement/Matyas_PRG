@@ -15,6 +15,7 @@ namespace CyberPrague2._0
     public partial class Form1 : Form
     {
         private Button restartButton; // Declare the restart button
+        private bool healthBoxExists = false;
         public Form1()
         {
             InitializeComponent();
@@ -47,10 +48,10 @@ namespace CyberPrague2._0
         bool goleft; // this boolean will be used for the player to go left to the screen
         bool goright; // this boolean will be used for the player to right to the screen
         string facing = "up"; // this string is called facing and it will be used to guide the bullets
-        double playerHealth = 100; // this double variable is called player health
+        double HP = 100; // this double variable is called player health
         int speed = 10; // this integer is for the speed of the player
         int ammo = 10; // this integer will hold the number of ammo the player has start of the game
-        int enemy1Speed = 2; // this integer will hold the speed which the zombies move in the game
+        int enemy1Speed = 2; // this integer will hold the speed which the enemys move in the game
         int enemy2Speed = 1;
         int score = 0; // this integer will hold the score the player achieved through the game
         bool gameOver = false; // this boolean is false in the beginning and it will be used when the game is finished
@@ -213,13 +214,17 @@ namespace CyberPrague2._0
                     DropAmmo(); // invoke the drop ammo function
                 }
             }
+            if (healthBar.Value < 20)
+            {
+                DropHP();
+            }
         }
         private void gameEngine(object sender, EventArgs e)
         {
 
-            if (playerHealth > 1) // if player health is greater than 1
+            if (HP > 1) // if player health is greater than 1
             {
-                healthBar.Value = Convert.ToInt32(playerHealth); // assign the progress bar to the player health integer
+                healthBar.Value = Convert.ToInt32(HP); // assign the progress bar to the player health integer
             }
             else
             {
@@ -238,6 +243,7 @@ namespace CyberPrague2._0
             if (healthBar.Value < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red; // change the progress bar colour to red. 
+                
             }
             if (goleft && player.Left > 0)
             {
@@ -279,9 +285,24 @@ namespace CyberPrague2._0
                         ammo += 7; // add 5 ammo to the integer
                     }
                 }
-                // if the bullets hits the 4 borders of the game
-                // if x is a picture box and x has the tag of bullet
-                if (x is PictureBox && x.Tag == "bullet")
+                foreach (Control y in this.Controls)
+                {
+                    if (y is PictureBox && y.Tag == "HP")
+                    {
+                        if (((PictureBox)y).Bounds.IntersectsWith(player.Bounds))
+                        {
+                            this.Controls.Remove(((PictureBox)y));
+                            ((PictureBox)y).Dispose();
+                            HP += 20;
+
+                            healthBoxExists = false;
+                        }
+                    }
+                }
+
+                    // if the bullets hits the 4 borders of the game
+                    // if x is a picture box and x has the tag of bullet
+                    if (x is PictureBox && x.Tag == "bullet")
                 {
                     // if the bullet is less the 1 pixel to the left
                     // if the bullet is more then 930 pixels to the right
@@ -293,95 +314,95 @@ namespace CyberPrague2._0
                         ((PictureBox)x).Dispose(); // dispose the bullet from the program
                     }
                 }
-                // below is the if statement which will be checking if the player hits a zombie
-                if (x is PictureBox && x.Tag == "zombie")
+                // below is the if statement which will be checking if the player hits a enemy
+                if (x is PictureBox && x.Tag == "enemy")
                 {
-                    // below is the if statament thats checking the bounds of the player and the zombie
+                    // below is the if statament thats checking the bounds of the player and the enemy
                     if (((PictureBox)x).Bounds.IntersectsWith(player.Bounds))
                     {
-                        playerHealth -= 1; // if the zombie hits the player then we decrease the health by 1
+                        HP -= 1; // if the enemy hits the player then we decrease the health by 1
                     }
-                    //move zombie towards the player picture box
+                    //move enemy towards the player picture box
                     if (((PictureBox)x).Left > player.Left)
                     {
-                        ((PictureBox)x).Left -= enemy1Speed; // move zombie towards the left of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Left; // change the zombie image to the left
+                        ((PictureBox)x).Left -= enemy1Speed; // move enemy towards the left of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Left; // change the enemy image to the left
                     }
                     if (((PictureBox)x).Top > player.Top)
                     {
-                        ((PictureBox)x).Top -= enemy1Speed; // move zombie upwards towards the players top
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Up; // change the zombie picture to the top pointing image
+                        ((PictureBox)x).Top -= enemy1Speed; // move enemy upwards towards the players top
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Up; // change the enemy picture to the top pointing image
                     }
                     if (((PictureBox)x).Left < player.Left)
                     {
-                        ((PictureBox)x).Left += enemy1Speed; // move zombie towards the right of the player
+                        ((PictureBox)x).Left += enemy1Speed; // move enemy towards the right of the player
                         ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Right; // change the image to the right image
                     }
                     if (((PictureBox)x).Top < player.Top)
                     {
-                        ((PictureBox)x).Top += enemy1Speed; // move the zombie towards the bottom of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Down; // change the image to the down zombie
+                        ((PictureBox)x).Top += enemy1Speed; // move the enemy towards the bottom of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter1Down; // change the image to the down enemy
                     }
                 }
-                if (x is PictureBox && x.Tag == "zombie2")
+                if (x is PictureBox && x.Tag == "enemy2")
                 {
-                    // below is the if statament thats checking the bounds of the player and the zombie
+                    // below is the if statament thats checking the bounds of the player and the enemy
                     if (((PictureBox)x).Bounds.IntersectsWith(player.Bounds))
                     {
-                        playerHealth -= 3; // if the zombie hits the player then we decrease the health by 3
+                        HP -= 3; // if the enemy hits the player then we decrease the health by 3
                     }
-                    //move zombie towards the player picture box
+                    //move enemy towards the player picture box
                     if (((PictureBox)x).Left > player.Left)
                     {
-                        ((PictureBox)x).Left -= enemy2Speed; // move zombie towards the left of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Left; // change the zombie image to the left
+                        ((PictureBox)x).Left -= enemy2Speed; // move enemy towards the left of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Left; // change the enemy image to the left
                     }
                     if (((PictureBox)x).Top > player.Top)
                     {
-                        ((PictureBox)x).Top -= enemy2Speed; // move zombie upwards towards the players top
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Up; // change the zombie picture to the top pointing image
+                        ((PictureBox)x).Top -= enemy2Speed; // move enemy upwards towards the players top
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Up; // change the enemy picture to the top pointing image
                     }
                     if (((PictureBox)x).Left < player.Left)
                     {
-                        ((PictureBox)x).Left += enemy2Speed; // move zombie towards the right of the player
+                        ((PictureBox)x).Left += enemy2Speed; // move enemy towards the right of the player
                         ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Right; // change the image to the right image
                     }
                     if (((PictureBox)x).Top < player.Top)
                     {
-                        ((PictureBox)x).Top += enemy2Speed; // move the zombie towards the bottom of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Down; // change the image to the down zombie
+                        ((PictureBox)x).Top += enemy2Speed; // move the enemy towards the bottom of the player
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Down; // change the image to the down enemy
                     }
                 }
                 // below is the second for loop, this is nexted inside the first one
-                // the bullet and zombie needs to be different than each other
+                // the bullet and enemy needs to be different than each other
                 // then we can use that to determine if the hit each other
                 foreach (Control j in this.Controls)
                 {
-                    // below is the selection thats identifying the bullet and zombie
-                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "zombie"))
+                    // below is the selection thats identifying the bullet and enemy
+                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "enemy"))
                     {
-                        // below is the if statement thats checking if bullet hits the zombie
+                        // below is the if statement thats checking if bullet hits the enemy
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
                             score++; // increase the kill score by 1 
                             this.Controls.Remove(j); // this will remove the bullet from the screen
                             j.Dispose(); // this will dispose the bullet all together from the program
-                            this.Controls.Remove(x); // this will remove the zombie from the screen
-                            x.Dispose(); // this will dispose the zombie from the program
-                            makeZombies(); // this function will invoke the make zombies function to add another zombie to the game
+                            this.Controls.Remove(x); // this will remove the enemy from the screen
+                            x.Dispose(); // this will dispose the enemy from the program
+                            makeEnemy(); // this function will invoke the make enemys function to add another enemy to the game
                         }
                     }
-                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "zombie2"))
+                    if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "enemy2"))
                     {
-                        // below is the if statement thats checking if bullet hits the zombie
+                        // below is the if statement thats checking if bullet hits the enemy
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
                             score++; // increase the kill score by 1 
                             this.Controls.Remove(j); // this will remove the bullet from the screen
                             j.Dispose(); // this will dispose the bullet all together from the program
-                            this.Controls.Remove(x); // this will remove the zombie from the screen
-                            x.Dispose(); // this will dispose the zombie from the program
-                            makeZombies(); // this function will invoke the make zombies function to add another zombie to the game
+                            this.Controls.Remove(x); // this will remove the enemy from the screen
+                            x.Dispose(); // this will dispose the enemy from the program
+                            makeEnemy2(); // this function will invoke the make enemys function to add another enemy to the game
                         }
                     }
                 }
@@ -402,6 +423,27 @@ namespace CyberPrague2._0
             ammo.BringToFront(); // bring it to front
             player.BringToFront(); // bring the player to front
         }
+        private void DropHP()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is PictureBox && c.Tag == "HP")
+                {
+                    return; // Exit the method if an HP box is already present
+                }
+            }
+            PictureBox Hp = new PictureBox();
+            Hp.Image = Properties.Resources.HP_Image;// assignment the ammo image to the picture box
+            Hp.Size = new System.Drawing.Size(64, 64);
+            Hp.SizeMode = PictureBoxSizeMode.StretchImage; // set the size to auto size
+            Hp.Left = rnd.Next(10, ClientSize.Width - 64); // set the location to a random left
+            Hp.Top = rnd.Next(50, ClientSize.Height - 64); // set the location to a random top
+            Hp.Tag = "HP"; // set the tag to ammo
+            this.Controls.Add(Hp); // add the ammo picture box to the screen
+            Hp.BringToFront(); // bring it to front
+            player.BringToFront(); // bring the player to front
+            healthBoxExists = true;
+        }
         private void shoot(string direct)
         {
             // this is the function thats makes the new bullets in this game
@@ -412,31 +454,31 @@ namespace CyberPrague2._0
             shoot.mkBullet(this); // run the function mkBullet from the bullet class. 
         }
 
-        private void makeZombies()
+        private void makeEnemy()
         {
-            // when this function is called it will make zombies in the game
-            PictureBox zombie = new PictureBox(); // create a new picture box called zombie
-            zombie.Size = new System.Drawing.Size(50, 50);
-            zombie.Tag = "zombie"; // add a tag to it called zombie
-            zombie.Image = Properties.Resources.enemyCharacter1Down; // the default picture for the zombie is zdown 
-            zombie.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new zombies left 
-            zombie.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new zombies top
-            zombie.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
-            this.Controls.Add(zombie); // add the picture box to the screen
+            // when this function is called it will make enemys in the game
+            PictureBox enemy = new PictureBox(); // create a new picture box called enemy
+            enemy.Size = new System.Drawing.Size(50, 50);
+            enemy.Tag = "enemy"; // add a tag to it called enemy
+            enemy.Image = Properties.Resources.enemyCharacter1Down; // the default picture for the enemy is zdown 
+            enemy.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new enemys left 
+            enemy.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new enemys top
+            enemy.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
+            this.Controls.Add(enemy); // add the picture box to the screen
             DoubleBuffered = true;
             player.BringToFront(); // bring the player to the front
         }
-        private void makeZombies2()
+        private void makeEnemy2()
         {
-            // when this function is called it will make zombies in the game
-            PictureBox zombie = new PictureBox(); // create a new picture box called zombie
-            zombie.Size = new System.Drawing.Size(50, 50);
-            zombie.Tag = "zombie2"; // add a tag to it called zombie
-            zombie.Image = Properties.Resources.enemyCharacter1Down; // the default picture for the zombie is zdown 
-            zombie.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new zombies left 
-            zombie.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new zombies top
-            zombie.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
-            this.Controls.Add(zombie); // add the picture box to the screen
+            // when this function is called it will make enemys in the game
+            PictureBox enemy2 = new PictureBox(); // create a new picture box called enemy
+            enemy2.Size = new System.Drawing.Size(50, 50);
+            enemy2.Tag = "enemy2"; // add a tag to it called enemy
+            enemy2.Image = Properties.Resources.enemyCharacter2Down; // the default picture for the enemy is zdown 
+            enemy2.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new enemys left 
+            enemy2.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new enemys top
+            enemy2.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
+            this.Controls.Add(enemy2); // add the picture box to the screen
             DoubleBuffered = true;
             player.BringToFront(); // bring the player to the front
         }
@@ -455,17 +497,17 @@ namespace CyberPrague2._0
         private void RestartButton_Click(object sender, EventArgs e)
         {
             // Reset game state
-            playerHealth = 100;
+            HP = 100;
             score = 0;
             ammo = 10;
             gameOver = false;
             restartButton.Visible = false;
 
-            // Clear existing zombies and bullets
+            // Clear existing enemys and bullets
             for (int i = this.Controls.Count - 1; i >= 0; i--)
             {
                 Control x = this.Controls[i];
-                if (x is PictureBox && (x.Tag == "zombie" || x.Tag == "bullet"))
+                if (x is PictureBox && (x.Tag == "enemy" || x.Tag == "bullet" || x.Tag == "enemy2"))
                 {
                     this.Controls.Remove(x);
                     x.Dispose();
@@ -477,11 +519,16 @@ namespace CyberPrague2._0
             this.KeyUp -= keyisup;
 
             // Restart the game elements
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                makeZombies();
+                makeEnemy();
             }
-            makeZombies2();
+            for (int i = 0; i < 1; i++)
+            {
+                makeEnemy2();
+            }
+            
+
 
             timer1.Start();
             player.Image = Properties.Resources.playerCharacterLeft;
