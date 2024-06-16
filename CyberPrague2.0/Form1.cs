@@ -21,10 +21,10 @@ namespace CyberPrague2._0
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(keyisdown);
             this.KeyUp += new KeyEventHandler(keyisup);
-            this.KeyPreview = true;  // This allows the form to capture key events
+            this.KeyPreview = true; 
 
             // Initialize the restart button
-            restartButton = new Button();  // Added this line
+            restartButton = new Button();  
             restartButton.Text = "Restart";
             restartButton.Size = new Size(100, 50);
             restartButton.Location = new Point((this.Width / 2) - 50, (this.Height / 2) - 25);
@@ -34,29 +34,28 @@ namespace CyberPrague2._0
         }
         private void CreateButton()
         {
-            restartButton = new Button();  // Added this line
+            restartButton = new Button();  
             restartButton.Text = "Restart";
             restartButton.Size = new Size(100, 50);
             restartButton.Location = new Point((this.Width / 2) - 50, (this.Height / 2) - 25);
             restartButton.Visible = false; // Initially hidden
-            restartButton.Click += RestartButton_Click; // Attach the click event handler
+            restartButton.Click += RestartButton_Click; 
             this.Controls.Add(restartButton);
         }
 
-        bool goup; // this boolean will be used for the player to go up the screen
-        bool godown; // this boolean will be used for the player to go down the screen
-        bool goleft; // this boolean will be used for the player to go left to the screen
-        bool goright; // this boolean will be used for the player to right to the screen
+        bool goup; //  player to go up the screen
+        bool godown; // player to go down the screen
+        bool goleft; //  player to go left to the screen
+        bool goright; //  player to right to the screen
         string facing = "up"; // this string is called facing and it will be used to guide the bullets
-        double HP = 100; // this double variable is called player health
-        int speed = 10; // this integer is for the speed of the player
-        int ammo = 10; // this integer will hold the number of ammo the player has start of the game
-        int enemy1Speed = 2; // this integer will hold the speed which the enemys move in the game
-        int enemy2Speed = 1;
-        int score = 0; // this integer will hold the score the player achieved through the game
+        double HP = 100; //  player health
+        int speed = 10; //  speed of the player
+        int ammo = 10; //  number of ammo the player has start of the game
+        int enemy1Speed = 3; // this integer will hold the speed which the enemys move in the game
+        int enemy2Speed = 2;
+        int score = 0; 
         bool gameOver = false; // this boolean is false in the beginning and it will be used when the game is finished
-        Random rnd = new Random(); // this is an instance of the random class we will use this to create a random number for this game
-                                   // end of listing variables
+        Random rnd = new Random(); 
         private void keyisdown(object sender, KeyEventArgs e)
         {
             if (gameOver) return; // if game over is true then do nothing in this event
@@ -64,37 +63,37 @@ namespace CyberPrague2._0
 
             if (e.KeyCode == Keys.Left)
             {
-                goleft = true; // change go left to true
-                facing = "left"; //change facing to left
-                player.Image = Properties.Resources.playerCharacterLeft; // change the player image to LEFT image
+                goleft = true; 
+                facing = "left"; 
+                player.Image = Properties.Resources.playerCharacterLeft; //  image to LEFT image
             }
             // end of left key selection
             // if the right key is pressed then do the following
             if (e.KeyCode == Keys.Right)
             {
-                goright = true; // change go right to true
-                facing = "right"; // change facing to right
-                player.Image = Properties.Resources.playerCharacterRight; // change the player image to right
+                goright = true; 
+                facing = "right"; 
+                player.Image = Properties.Resources.playerCharacterRight; // image to right
             }
             // end of right key selection
             // if the up key is pressed then do the following
             if (e.KeyCode == Keys.Up)
             {
-                facing = "up"; // change facing to up
-                goup = true; // change go up to true
-                player.Image = Properties.Resources.playerCharacterUp; // change the player image to up
+                facing = "up"; 
+                goup = true; 
+                player.Image = Properties.Resources.playerCharacterUp; //  image to up
             }
             // end of up key selection
             // if the down key is pressed then do the following
             if (e.KeyCode == Keys.Down)
             {
-                facing = "down"; // change facing to down
-                godown = true; // change go down to true
-                player.Image = Properties.Resources.playerCharacterDown; //change the player image to down
+                facing = "down"; 
+                godown = true; 
+                player.Image = Properties.Resources.playerCharacterDown; //image to down
             }
             // end of the down key selection
         }
-
+        // extra different way for the pictureboxes to rotate, not functional
         /*if (e.KeyCode == Keys.Left && currentFacing != "left")
             {
                 goleft = true; // change go left to true
@@ -186,32 +185,32 @@ namespace CyberPrague2._0
             // below is the key up selection for the left key
             if (e.KeyCode == Keys.Left)
             {
-                goleft = false; // change the go left boolean to false
+                goleft = false; 
             }
             // below is the key up selection for the right key
             if (e.KeyCode == Keys.Right)
             {
-                goright = false; // change the go right boolean to false
+                goright = false; 
             }
-            // below is the key up selection for the up key
+           
             if (e.KeyCode == Keys.Up)
             {
-                goup = false; // change the go up boolean to false
+                goup = false; 
             }
-            // below is the key up selection for the down key
+           
             if (e.KeyCode == Keys.Down)
             {
-                godown = false; // change the go down boolean to false
+                godown = false; 
             }
-            //below is the key up selection for the space key
+            
             if (e.KeyCode == Keys.Space && ammo > 0) // in this if statement we are checking if the space bar is up and ammo is more than 0
             {
-                ammo--; // reduce ammo by 1 from the total number
+                ammo--; // reduce ammo by 1
                 shoot(facing); // invoke the shoot function with the facing string inside it
                 //facing will transfer up, down, left or right to the function and that will shoot the bullet that way. 
                 if (ammo < 1) // if ammo is less than 1
                 {
-                    DropAmmo(); // invoke the drop ammo function
+                    DropAmmo(); // drop ammo function
                 }
             }
             if (healthBar.Value < 20)
@@ -228,6 +227,7 @@ namespace CyberPrague2._0
             }
             else
             {
+                // extras
                 // if the player health is below 1
                 //player.Image = Properties.Resources.dead; // show the player dead image
                 // stop the timer
@@ -304,10 +304,7 @@ namespace CyberPrague2._0
                     // if x is a picture box and x has the tag of bullet
                     if (x is PictureBox && x.Tag == "bullet")
                 {
-                    // if the bullet is less the 1 pixel to the left
-                    // if the bullet is more then 930 pixels to the right
-                    // if the bullet is 10 pixels from the top
-                    // if the bullet is 700 pixels to the bottom
+                    // if the shot bullet is within the bounds
                     if (((PictureBox)x).Left < 1 || ((PictureBox)x).Left > 2500 || ((PictureBox)x).Top < 10 || ((PictureBox)x).Top > 1500)
                     {
                         this.Controls.Remove(((PictureBox)x)); // remove the bullet from the display
@@ -320,7 +317,7 @@ namespace CyberPrague2._0
                     // below is the if statament thats checking the bounds of the player and the enemy
                     if (((PictureBox)x).Bounds.IntersectsWith(player.Bounds))
                     {
-                        HP -= 1; // if the enemy hits the player then we decrease the health by 1
+                        HP -= 2; // if the enemy hits the player then we decrease the health by 1
                     }
                     //move enemy towards the player picture box
                     if (((PictureBox)x).Left > player.Left)
@@ -346,36 +343,36 @@ namespace CyberPrague2._0
                 }
                 if (x is PictureBox && x.Tag == "enemy2")
                 {
-                    // below is the if statament thats checking the bounds of the player and the enemy
+                    // just a copy for otherr enemy, prolly better way to do it but i am lazyy
                     if (((PictureBox)x).Bounds.IntersectsWith(player.Bounds))
                     {
-                        HP -= 3; // if the enemy hits the player then we decrease the health by 3
+                        HP -= 4; // different stats
                     }
-                    //move enemy towards the player picture box
+                    
                     if (((PictureBox)x).Left > player.Left)
                     {
-                        ((PictureBox)x).Left -= enemy2Speed; // move enemy towards the left of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Left; // change the enemy image to the left
+                        ((PictureBox)x).Left -= enemy2Speed; 
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Left; 
                     }
                     if (((PictureBox)x).Top > player.Top)
                     {
-                        ((PictureBox)x).Top -= enemy2Speed; // move enemy upwards towards the players top
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Up; // change the enemy picture to the top pointing image
+                        ((PictureBox)x).Top -= enemy2Speed; 
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Up; 
                     }
                     if (((PictureBox)x).Left < player.Left)
                     {
-                        ((PictureBox)x).Left += enemy2Speed; // move enemy towards the right of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Right; // change the image to the right image
+                        ((PictureBox)x).Left += enemy2Speed; 
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Right;
                     }
                     if (((PictureBox)x).Top < player.Top)
                     {
-                        ((PictureBox)x).Top += enemy2Speed; // move the enemy towards the bottom of the player
-                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Down; // change the image to the down enemy
+                        ((PictureBox)x).Top += enemy2Speed; 
+                        ((PictureBox)x).Image = Properties.Resources.enemyCharacter2Down; 
                     }
                 }
                 // below is the second for loop, this is nexted inside the first one
                 // the bullet and enemy needs to be different than each other
-                // then we can use that to determine if the hit each other
+                //  determine if the hit each other
                 foreach (Control j in this.Controls)
                 {
                     // below is the selection thats identifying the bullet and enemy
@@ -384,12 +381,12 @@ namespace CyberPrague2._0
                         // below is the if statement thats checking if bullet hits the enemy
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
-                            score++; // increase the kill score by 1 
-                            this.Controls.Remove(j); // this will remove the bullet from the screen
-                            j.Dispose(); // this will dispose the bullet all together from the program
-                            this.Controls.Remove(x); // this will remove the enemy from the screen
-                            x.Dispose(); // this will dispose the enemy from the program
-                            makeEnemy(); // this function will invoke the make enemys function to add another enemy to the game
+                            score++; 
+                            this.Controls.Remove(j); 
+                            j.Dispose(); 
+                            this.Controls.Remove(x); 
+                            x.Dispose(); 
+                            makeEnemy(); 
                         }
                     }
                     if ((j is PictureBox && j.Tag == "bullet") && (x is PictureBox && x.Tag == "enemy2"))
@@ -397,12 +394,12 @@ namespace CyberPrague2._0
                         // below is the if statement thats checking if bullet hits the enemy
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
-                            score++; // increase the kill score by 1 
-                            this.Controls.Remove(j); // this will remove the bullet from the screen
-                            j.Dispose(); // this will dispose the bullet all together from the program
-                            this.Controls.Remove(x); // this will remove the enemy from the screen
-                            x.Dispose(); // this will dispose the enemy from the program
-                            makeEnemy2(); // this function will invoke the make enemys function to add another enemy to the game
+                            score++; // increase scoore by 1
+                            this.Controls.Remove(j); 
+                            j.Dispose(); 
+                            this.Controls.Remove(x); 
+                            x.Dispose(); 
+                            makeEnemy2(); //resets the enemy
                         }
                     }
                 }
@@ -411,17 +408,17 @@ namespace CyberPrague2._0
 
         private void DropAmmo()
         {
-            // this function will make a ammo image for this game
-            PictureBox ammo = new PictureBox(); // create a new instance of the picture box
-            ammo.Image = Properties.Resources.ammo_Image;// assignment the ammo image to the picture box
+          
+            PictureBox ammo = new PictureBox(); 
+            ammo.Image = Properties.Resources.ammo_Image;
             ammo.Size = new System.Drawing.Size(64, 64);
-            ammo.SizeMode = PictureBoxSizeMode.StretchImage; // set the size to auto size
-            ammo.Left = rnd.Next(10, ClientSize.Width - 64); // set the location to a random left
-            ammo.Top = rnd.Next(50, ClientSize.Height - 64); // set the location to a random top
+            ammo.SizeMode = PictureBoxSizeMode.StretchImage; 
+            ammo.Left = rnd.Next(10, ClientSize.Width - 64);
+            ammo.Top = rnd.Next(50, ClientSize.Height - 64);
             ammo.Tag = "ammo"; // set the tag to ammo
-            this.Controls.Add(ammo); // add the ammo picture box to the screen
-            ammo.BringToFront(); // bring it to front
-            player.BringToFront(); // bring the player to front
+            this.Controls.Add(ammo); 
+            ammo.BringToFront(); 
+            player.BringToFront(); 
         }
         private void DropHP()
         {
@@ -447,40 +444,40 @@ namespace CyberPrague2._0
         private void shoot(string direct)
         {
             // this is the function thats makes the new bullets in this game
-            bullet shoot = new bullet(); // create a new instance of the bullet class
-            shoot.direction = direct; // assignment the direction to the bullet
-            shoot.bulletLeft = player.Left + (player.Width / 2); // place the bullet to left half of the player
-            shoot.bulletTop = player.Top + (player.Height / 2); // place the bullet on top half of the player
-            shoot.mkBullet(this); // run the function mkBullet from the bullet class. 
+            bullet shoot = new bullet();
+            shoot.direction = direct; 
+            shoot.bulletLeft = player.Left + (player.Width / 2); 
+            shoot.bulletTop = player.Top + (player.Height / 2); 
+            shoot.mkBullet(this); 
         }
 
         private void makeEnemy()
         {
             // when this function is called it will make enemys in the game
-            PictureBox enemy = new PictureBox(); // create a new picture box called enemy
+            PictureBox enemy = new PictureBox(); 
             enemy.Size = new System.Drawing.Size(50, 50);
-            enemy.Tag = "enemy"; // add a tag to it called enemy
-            enemy.Image = Properties.Resources.enemyCharacter1Down; // the default picture for the enemy is zdown 
-            enemy.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new enemys left 
-            enemy.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new enemys top
-            enemy.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
+            enemy.Tag = "enemy"; 
+            enemy.Image = Properties.Resources.enemyCharacter1Down;
+            enemy.Left = rnd.Next(0, ClientSize.Width - 64); 
+            enemy.Top = rnd.Next(0, ClientSize.Height - 64); 
+            enemy.SizeMode = PictureBoxSizeMode.StretchImage; 
             this.Controls.Add(enemy); // add the picture box to the screen
             DoubleBuffered = true;
             player.BringToFront(); // bring the player to the front
         }
         private void makeEnemy2()
         {
-            // when this function is called it will make enemys in the game
-            PictureBox enemy2 = new PictureBox(); // create a new picture box called enemy
+            // when this function is called it will make ´different enemy in the game
+            PictureBox enemy2 = new PictureBox(); 
             enemy2.Size = new System.Drawing.Size(50, 50);
-            enemy2.Tag = "enemy2"; // add a tag to it called enemy
-            enemy2.Image = Properties.Resources.enemyCharacter2Down; // the default picture for the enemy is zdown 
-            enemy2.Left = rnd.Next(0, ClientSize.Width - 64); // generate a number between 0 and client size  and assignment that to the new enemys left 
-            enemy2.Top = rnd.Next(0, ClientSize.Height - 64); // generate a number between 0 and client size and assignment that to the new enemys top
-            enemy2.SizeMode = PictureBoxSizeMode.StretchImage; // set auto size for the new picture box
-            this.Controls.Add(enemy2); // add the picture box to the screen
+            enemy2.Tag = "enemy2"; 
+            enemy2.Image = Properties.Resources.enemyCharacter2Down; 
+            enemy2.Left = rnd.Next(0, ClientSize.Width - 64); 
+            enemy2.Top = rnd.Next(0, ClientSize.Height - 64); 
+            enemy2.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Controls.Add(enemy2); 
             DoubleBuffered = true;
-            player.BringToFront(); // bring the player to the front
+            player.BringToFront(); 
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -545,14 +542,6 @@ namespace CyberPrague2._0
             this.Focus();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
