@@ -83,6 +83,16 @@ namespace CyberPrague2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background2 {
+            get {
+                object obj = ResourceManager.GetObject("Background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemyCharacter1Down {
             get {
                 object obj = ResourceManager.GetObject("enemyCharacter1Down", resourceCulture);
@@ -156,6 +166,16 @@ namespace CyberPrague2._0.Properties {
         internal static System.Drawing.Bitmap enemyCharacter2Up {
             get {
                 object obj = ResourceManager.GetObject("enemyCharacter2Up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HP_Image {
+            get {
+                object obj = ResourceManager.GetObject("HP_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
