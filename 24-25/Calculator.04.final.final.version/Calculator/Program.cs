@@ -86,7 +86,7 @@ namespace Calculator
                     }
                     catch (FormatException)
                     { 
-                        Console.WriteLine("Neplatný vstup! Opakujte prosím akci (zadejte celé číslo): ");
+                        Console.WriteLine("Neplatný vstup! Opakujte prosím akci: ");
                     }
                 }
 
@@ -105,7 +105,7 @@ namespace Calculator
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Neplatný vstup! Opakujte prosím akci (zadejte celé číslo): ");
+                        Console.WriteLine("Neplatný vstup! Opakujte prosím akci: ");
                     }
                 }
 
