@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Conflictships
 {
-    internal class sea
+    internal class Sea
     {
+        //(v téhle třídě můžeš najít random easteregg na Star Wars :D)
+
         //hrací pole
         private char[,] battleSea;
 
         //konstruktor pro hrací pole (jeho vygenerování)
-        public sea()
+        public Sea()
         {
             //vytvoření pole 
             battleSea = new char[10, 10];
@@ -28,20 +30,25 @@ namespace Conflictships
             }
         }
 
-        //metoda pro vykreslování moře (pole)
+        //metoda pro vykreslování moře (pole) (chatGPT tu radil hodně)
         public void Render()
         {
-            //vypíše písmena pro určení pozice
-            Console.WriteLine("  A B C D E F G H I J");
-            for (int col = 0; col < 10; col++)
+            Console.Write("   ");//přidá mezery na začátek písmenkové řady
+            for (char charBinks = 'A'; charBinks <= 'J'; charBinks++)//postupně vypisuje písmena od A do J
             {
-                //vypíše postupně řádky a čísla u nich (chatGPT zde radil hodně)
-                Console.Write((col + 1).ToString().PadLeft(2) + " ");
-                for (int row = 0; row < 10; row++)
+                Console.Write(charBinks + " ");//přidává mezery mezi písmena
+            }
+            Console.WriteLine();//přesune na nový řádek
+
+            //přidá sloupec čísel
+            for (int row = 0; row < 10; row++)
+            {
+                Console.Write((row + 1).ToString().PadLeft(2) + " ");
+                for (int col = 0; col < 10; col++)
                 {
-                    Console.Write(battleSea[col, row] + " ");
+                    Console.Write(battleSea[row, col] + " ");
                 }
-                Console.WriteLine();
+                Console.WriteLine(); 
             }
         }
     }
