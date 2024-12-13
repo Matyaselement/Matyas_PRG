@@ -84,7 +84,7 @@ namespace Calculator
                         Console.WriteLine("První číslo je " + num1);
                         inputOk = true;
                     }
-                    catch (FormatException)
+                    catch
                     { 
                         Console.WriteLine("Neplatný vstup! Opakujte prosím akci (zadejte celé číslo): ");
                     }
@@ -133,7 +133,7 @@ namespace Calculator
                 //podmínky pro jednotlivé číselné operace
                 if (numOp == "+")
                 {
-                    result = Plus (num1, num2);
+                    result = Plus(num1, num2);
                     Console.WriteLine("Výsledek sčítání je: " + result);
                 }
                 else if (numOp == "-")
