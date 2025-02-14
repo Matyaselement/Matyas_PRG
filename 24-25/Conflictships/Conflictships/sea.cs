@@ -51,5 +51,31 @@ namespace Conflictships
                 Console.WriteLine(); 
             }
         }
+
+        public bool PlaceShip(Ship ship)
+        {
+            foreach (var coord in ship.coordi)
+            {
+                if (coord.x < 0 || coord.x >= 10 || coord.y < 0 || coord.y >= 10)
+                {
+                    return false; // Loď je mimo hrací pole
+                }
+
+                if (battleSea[coord.x, coord.y] != '.')
+                {
+                    return false;
+                }
+            }
+            foreach (var coord in ship.coordi)
+            {
+                battleSea[coord.x, coord.y] = 'S';
+            }
+
+            // 3. Přidání lodi do seznamu lodí
+            ships.Add(ship);
+
+            return true; // Loď byla úspěšně umístěna
+        }
+
     }
 }
