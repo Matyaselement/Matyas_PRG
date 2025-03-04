@@ -8,11 +8,14 @@ namespace Evolutionary
 {
     internal class Player
     {
+        //seznam odemčených genů
         public List<string> unlockedGenes = new List<string>();
-        public void PlayerGameSetup()
+
+        //funkce: přidá základní gen A do odemčených genů
+        public void PlayerSimSetup()
         {
             unlockedGenes.Add("A");
-            Gen A = new Gen("A", 2, 6, true, 15, 1);
+            Gen A = new Gen("A", 2, 6, 15, 1);
             unlockedGenes2.Add(A);  
         }
 
