@@ -57,7 +57,7 @@ namespace Evolutionary
 
                     //vypíše geny ze seznamu aktuálně aktivních genů simulace
                     Console.WriteLine("Jednotlivé generace genů: \n");
-                    Gen simulation = new Gen("", 0, 0, 0, 0);
+                    Gen simulation = new Gen("", 0, 0, 0);
                     simulation.SimSetup();
 
                     //cyklus tvoření nových generací, heavily chatGPT inspired
@@ -66,6 +66,8 @@ namespace Evolutionary
                     {
                         Console.WriteLine($"\nGenerace {generationCount}:");
                         simulation.ShowGeneration();
+
+                        
 
                         Console.WriteLine("\nPřeješ si pokračovat na další generaci? Napiš 'ano' nebo 'ne'.");
                         string wannaNewGen = Console.ReadLine();

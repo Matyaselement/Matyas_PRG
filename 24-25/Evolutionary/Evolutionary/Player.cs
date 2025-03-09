@@ -15,7 +15,7 @@ namespace Evolutionary
         public void PlayerSimSetup()
         {
             unlockedGenes.Add("A");
-            Gen A = new Gen("A", 2, 6, 15, 1);
+            Gen A = new Gen("A", 2, 6, 15);
             unlockedGenes2.Add(A);  
         }
 
