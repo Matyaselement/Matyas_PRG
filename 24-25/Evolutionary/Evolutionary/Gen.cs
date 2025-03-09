@@ -83,6 +83,8 @@ namespace Evolutionary
             // Novou generaci přiřadíme do activeGenes
             activeGenes = newGeneration;
 
+
+
         }
     }
 }

@@ -59,27 +59,55 @@ namespace Evolutionary
                     Console.WriteLine("Jednotlivé generace genů: \n");
                     Gen simulation = new Gen("", 0, 0, 0, 0);
                     simulation.SimSetup();
-                    simulation.ShowGeneration();
 
-                   
-                    
+                    //cyklus tvoření nových generací, heavily chatGPT inspired
+                    int generationCount = 1;
+                    while (true)
+                    {
+                        Console.WriteLine($"\nGenerace {generationCount}:");
+                        simulation.ShowGeneration();
 
+                        Console.WriteLine("\nPřeješ si pokračovat na další generaci? Napiš 'ano' nebo 'ne'.");
+                        string wannaNewGen = Console.ReadLine();
 
-                    //ukončení simulace
+                        if (wannaNewGen == "ano")
+                        {
+                            //vygeneruje novou generaci pomocí metody GeneNewGene
+                            Console.WriteLine("\nDobrá, jdeme na další generaci!");
+                            Console.ReadLine();
+                            simulation.GeneNewGene();
+                            generationCount++;
+                        }
+                        //ukončení simulace
+                        else if (wannaNewGen == "ne")
+                        {
+                            Console.WriteLine("Dobrá, simulace končí touto generací.");
+                            simIsRunning = false;
+                            break;  // Ukončí cyklus
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ou! Zadal jsi chybný vstup, musíš napsat přímo 'ano' nebo 'ne'. Zkus to znovu!");
+                        }
+                    }
+
+                    //bývalý systém ukončení
+                    /*ukončení simulace
                     Console.WriteLine("\nPřeješ si simulaci v této generaci ukončit? Napiš 'ano' nebo 'ne'.");
-                    string end = Console.ReadLine();
+                    string end2 = Console.ReadLine();
 
                     //podmínka pro cyklus konce
                     bool endCon = false;
                     while (!endCon)
                     {
                         
-                        if (end == "ne")
+                        if (end2 == "ne")
                         {
-                            Console.WriteLine("Dobrá, jdeme na další generaci!");
+                            Console.WriteLine("\nDobrá, jdeme na další generaci!");
+                            Console.ReadLine ();
                             endCon = true;
                         }
-                        else if (end == "ano")
+                        else if (end2 == "ano")
                         {
                             Console.WriteLine("Dobrá, simulace končí touto generací.");
                             endCon = true;
@@ -90,9 +118,9 @@ namespace Evolutionary
                         else
                         {
                             Console.WriteLine("Ou! Zadal jsi chybný vstup, musíš napsat přímo 'ano' nebo 'ne'. Zkus to znovu!");
-                            end = Console.ReadLine();
+                            end2 = Console.ReadLine();
                         }
-                    }
+                    }*/
                 }
                 else
                 {
