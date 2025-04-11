@@ -39,11 +39,17 @@
             this.button_purple = new System.Windows.Forms.Button();
             this.button_brown = new System.Windows.Forms.Button();
             this.rubber_button = new System.Windows.Forms.Button();
+            this.trackBarWidthPen = new System.Windows.Forms.TrackBar();
+            this.button_rubber = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWidthPen)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
             // 
+            this.canvas.BackColor = System.Drawing.Color.White;
             this.canvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.canvas.Location = new System.Drawing.Point(32, 24);
             this.canvas.Name = "canvas";
@@ -155,11 +161,45 @@
             this.rubber_button.UseVisualStyleBackColor = true;
             this.rubber_button.Click += new System.EventHandler(this.rubber_button_Click);
             // 
+            // trackBarWidthPen
+            // 
+            this.trackBarWidthPen.Location = new System.Drawing.Point(1069, 673);
+            this.trackBarWidthPen.Maximum = 20;
+            this.trackBarWidthPen.Minimum = 1;
+            this.trackBarWidthPen.Name = "trackBarWidthPen";
+            this.trackBarWidthPen.Size = new System.Drawing.Size(196, 69);
+            this.trackBarWidthPen.TabIndex = 11;
+            this.trackBarWidthPen.Value = 1;
+            this.trackBarWidthPen.Scroll += new System.EventHandler(this.trackBarWidthPen_Scroll);
+            // 
+            // button_rubber
+            // 
+            this.button_rubber.Location = new System.Drawing.Point(1069, 720);
+            this.button_rubber.Name = "button_rubber";
+            this.button_rubber.Size = new System.Drawing.Size(196, 58);
+            this.button_rubber.TabIndex = 12;
+            this.button_rubber.Text = "Guma";
+            this.button_rubber.UseVisualStyleBackColor = true;
+            this.button_rubber.Click += new System.EventHandler(this.button_rubber_Click);
+            // 
+            // button_save
+            // 
+            this.button_save.Location = new System.Drawing.Point(1069, 795);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(196, 136);
+            this.button_save.TabIndex = 13;
+            this.button_save.Text = "Uložit obrázek";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1412, 943);
+            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button_rubber);
+            this.Controls.Add(this.trackBarWidthPen);
             this.Controls.Add(this.rubber_button);
             this.Controls.Add(this.button_brown);
             this.Controls.Add(this.button_purple);
@@ -174,7 +214,9 @@
             this.Name = "Paint";
             this.Text = "Paint";
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWidthPen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -191,6 +233,10 @@
         private System.Windows.Forms.Button button_purple;
         private System.Windows.Forms.Button button_brown;
         private System.Windows.Forms.Button rubber_button;
+        private System.Windows.Forms.TrackBar trackBarWidthPen;
+        private System.Windows.Forms.Button button_rubber;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button_save;
     }
 }
 

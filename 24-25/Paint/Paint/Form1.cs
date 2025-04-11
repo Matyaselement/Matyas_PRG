@@ -14,11 +14,13 @@ namespace Paint
     public partial class Paint : Form
     {
 
-        private bool isDrawing = false; //malujeme?
-        private List<List<Point>> strokes = new List<List<Point>>(); //list který ukládá list další, díky němuž můžeme normálně kreslit nez spojovacích čar mezi jednotlivými tahy (AI)
+        private bool isDrawing = false; //indíkuje jestli user právě teď kreslí
+        private List<Stroke> strokes = new List<Stroke>(); //seznam všch tahů co user udělal
         private List<Point> currentDrawingPoints = new List<Point>(); //list pro aktuální points
-        private Color currentColor = Color.Black; //Nastavení první defaultní barvy na černou
-        private float penWidth = 2; // Defaultní tloušťka pera
+        private Color currentColor = Color.Black; //nastavení první defaultní barvy na černou
+        private float penWidth = 2; //defaultní tloušťka pera
+        private Stroke currentStroke; //proměnná aktuálního tahu usera
+        private bool isEraser = false; //je aktivní guma? proměnná
         public Paint()
         {
             InitializeComponent();
@@ -35,46 +37,61 @@ namespace Paint
         {
 
             Graphics graphics = e.Graphics;
-            using (Pen pen = new Pen(currentColor, penWidth))
+
+            //Vykreslení všech hotových tahů
+            foreach (var stroke in strokes)
             {
-                
-                foreach (var stroke in strokes)
+                using (Pen pen = new Pen(stroke.Color, stroke.Width))
                 {
-                    for (int i = 1; i < stroke.Count; i++)
+                    for (int i = 1; i < stroke.Points.Count; i++)
                     {
-                        graphics.DrawLine(pen, stroke[i - 1], stroke[i]);
+                        graphics.DrawLine(pen, stroke.Points[i - 1], stroke.Points[i]);
                     }
                 }
+            }
 
-                
-                for (int i = 1; i < currentDrawingPoints.Count; i++)
+            //Vykreslení aktuálního tahu
+            if (currentStroke != null)
+            {
+                using (Pen pen = new Pen(currentStroke.Color, currentStroke.Width))
                 {
-                    graphics.DrawLine(pen, currentDrawingPoints[i - 1], currentDrawingPoints[i]);
+                    for (int i = 1; i < currentStroke.Points.Count; i++)
+                    {
+                        graphics.DrawLine(pen, currentStroke.Points[i - 1], currentStroke.Points[i]);
+                    }
                 }
             }
         }
 
         private void canvas_MouseDown(object sender, MouseEventArgs e)
         {
-            //začne s kreslením a následně vymaže points z listu, zároveň zajistí aby se lines nespojily
+            //spuštění kreslení při tlačítku myši (stisknutí)
             isDrawing = true;
-            currentDrawingPoints.Clear();
-            currentDrawingPoints.Add(e.Location);
+            //nastavení na bílou pokud je aktivní guma
+            Color strokeColor = isEraser ? Color.White : currentColor;
+            //nový tah
+            currentStroke = new Stroke(strokeColor, penWidth, isEraser);
+            currentStroke.Points.Add(e.Location);
         }
 
         private void canvas_MouseUp(object sender, MouseEventArgs e)
         {
             //ukončí kreslení, přidá line do listu
             isDrawing = false;
-            strokes.Add(new List<Point>(currentDrawingPoints));
-            currentDrawingPoints.Clear();
+            //přidá ukončený tah do seznamu
+            if (currentStroke != null)
+            {
+                strokes.Add(currentStroke);
+                currentStroke = null;
+            }
         }
 
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDrawing)
+            //při pohybu myši přidá body do canvas
+            if (isDrawing && currentStroke != null)
             {
-                currentDrawingPoints.Add(e.Location);
+                currentStroke.Points.Add(e.Location);
                 canvas.Invalidate();
             }
         }
@@ -87,50 +104,93 @@ namespace Paint
             canvas.Invalidate();
         }
 
-        //přenastavují barvy
+        //přenastavují barvy, vypínají případnou gumu
         private void blue_button_Click(object sender, EventArgs e)
         {
             currentColor = Color.Blue;
+            isEraser = false;
         }
 
         private void black_button_Click(object sender, EventArgs e)
         {
             currentColor = Color.Black;
+            isEraser = false;
         }
 
         private void red_button_Click(object sender, EventArgs e)
         {
             currentColor = Color.Red;
+            isEraser = false;
         }
 
         private void button_yellow_Click(object sender, EventArgs e)
         {
             currentColor = Color.Yellow;
+            isEraser = false;
         }
 
         private void button_green_Click(object sender, EventArgs e)
         {
             currentColor = Color.Green;
+            isEraser = false;
         }
 
         private void button_pink_Click(object sender, EventArgs e)
         {
             currentColor = Color.Pink;
+            isEraser = false;
         }
 
         private void button_purple_Click(object sender, EventArgs e)
         {
             currentColor = Color.Purple;
+            isEraser = false;
         }
 
         private void button_brown_Click(object sender, EventArgs e)
         {
             currentColor = Color.Brown;
+            isEraser = false;
         }
 
         private void rubber_button_Click(object sender, EventArgs e)
         {
             currentColor = Color.White;
+            isEraser = false;
+        }
+
+        //nastavý trackbar tloušťku pera podle value trackbaru
+        private void trackBarWidthPen_Scroll(object sender, EventArgs e)
+        {
+            penWidth = trackBarWidthPen.Value;
+        }
+
+        //zapne funkci gumy
+        private void button_rubber_Click(object sender, EventArgs e)
+        {
+            isEraser = true;
+        }
+        private void SaveCanvas()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PNG Image|*.png";
+            saveDialog.Title = "Uložit obrázek jako PNG";
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Vytvoříme bitmapu stejné velikosti jako canvas
+                Bitmap bmp = new Bitmap(canvas.Width, canvas.Height);
+                canvas.DrawToBitmap(bmp, new Rectangle(0, 0, canvas.Width, canvas.Height));
+
+                //Uložíme bitmapu
+                bmp.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            }
+        }
+
+        //tlačítko na ukládání
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            SaveCanvas();
         }
     }
 }
